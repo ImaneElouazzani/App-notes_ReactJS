@@ -7,8 +7,35 @@ import Menu from './ImgsSidebar/menu.svg'
 import './Sidebar.css'
 
 export default function Sidebar() {
+
+  const [checkWidth, setCheckWidth] = useState(window.innerWidth)
+
+  const checkWidthFunc = () => {
+    // console.log('resized', window.innerWidth)
+    setCheckWidth(window.innerWidth)
+  }
+
+  useEffect(() => {
+    window.addEventListener('resize', checkWidthFunc)
+    return () => {
+      window.removeEventListener('resize', checkWidthFunc)
+    }
+  }, [])
+
+  const [toggleNav, setToggleNav] = useState(false)
+
+  const toggleNavFunc = () => {
+    setToggleNav(!toggleNav)
+  }
+
   return <>
-  <nav className='container-sidebar'>
+  {
+    checkWidth < 900 && (<button onClick={toggleNavFunc} className='toggle-nav-btn'>
+    <img src={Menu} alt='menu icon'/>
+  </button>)
+  }
+  
+  <nav className={toggleNav ? 'container-sidebar visible-nav' : 'container-sidebar'}>
     <div className='sidebar'>
       <div className='three-dots'>
         <div className='dot-nav d-red'></div>

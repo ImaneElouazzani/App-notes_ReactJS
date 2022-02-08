@@ -5,6 +5,7 @@ import FolderIcon from './ImgsSidebar/folder.svg'
 import Tools from './ImgsSidebar/settings.svg'
 import Menu from './ImgsSidebar/menu.svg'
 import './Sidebar.css'
+import SideNotes from '../SideNotes/SideNotes'
 
 export default function Sidebar() {
 
@@ -58,6 +59,9 @@ export default function Sidebar() {
         </li>
       </ul>
       </div>
+
+      <SideNotes />
+
     </nav>
   </>
 }
